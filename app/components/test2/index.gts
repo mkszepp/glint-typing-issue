@@ -3,3 +3,4 @@ export interface Company {
 }
 
 export const COMPANY_NAME: string = "My Company Name";
+export const COMPANY_NAME2: string = "My Company Name 2";
