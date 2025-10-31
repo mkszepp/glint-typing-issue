@@ -18,6 +18,7 @@ import js from '@eslint/js';
 import ts from 'typescript-eslint';
 
 import ember from 'eslint-plugin-ember/recommended';
+import importPlugin from 'eslint-plugin-import';
 
 import eslintConfigPrettier from 'eslint-config-prettier';
 import qunit from 'eslint-plugin-qunit';
@@ -76,11 +77,18 @@ export default ts.config(
   },
   {
     files: ['**/*.{ts,gts}'],
+    plugins: {
+      import: importPlugin,
+    },
     languageOptions: {
       parser: ember.parser,
       parserOptions: parserOptions.esm.ts,
     },
     extends: [...ts.configs.recommendedTypeChecked, ember.configs.gts],
+    rules: {
+      // require relative imports use full extensions
+      'import/extensions': ['error', 'always', { ignorePackages: true }],
+    },
   },
   {
     files: ['tests/**/*-test.{js,gjs,ts,gts}'],
