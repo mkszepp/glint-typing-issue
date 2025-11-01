@@ -88,7 +88,7 @@ export default ts.config(
       parserOptions: {
         ...parserOptions.esm.ts,
         project: true,
-      }
+      },
     },
     extends: [...ts.configs.recommendedTypeChecked, ember.configs.gts],
     rules: {
