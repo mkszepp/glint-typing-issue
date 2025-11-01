@@ -69,7 +69,10 @@ export default ts.config(
   {
     files: ['**/*.{js,gjs}'],
     languageOptions: {
-      parserOptions: parserOptions.esm.js,
+      parserOptions: {
+        ...parserOptions.esm.js,
+        project: true,
+      },
       globals: {
         ...globals.browser,
       },
@@ -82,7 +85,10 @@ export default ts.config(
     },
     languageOptions: {
       parser: ember.parser,
-      parserOptions: parserOptions.esm.ts,
+      parserOptions: {
+        ...parserOptions.esm.ts,
+        project: true,
+      }
     },
     extends: [...ts.configs.recommendedTypeChecked, ember.configs.gts],
     rules: {
